@@ -1,0 +1,25 @@
+.card {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+.card__image {
+  position: relative;
+  width: 328px;
+  height: 328px;
+  flex-shrink: 0;
+}
+
+.card__name {
+  position: absolute;
+  z-index: 1;
+  top: 16px;
+  color: rgba(0, 0, 0, 0.6);
+  font-family: Cabinet Grotesk;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  padding: 2px 12px;
+  border-radius: 4px;
+  background: #fff;
+}

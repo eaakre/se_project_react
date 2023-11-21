@@ -1,0 +1,15 @@
+.weather {
+  position: relative;
+}
+
+.weather-info {
+  position: absolute;
+  color: white;
+  font-size: 36px;
+  top: 20px;
+  left: 16px;
+}
+
+.weather-image {
+  width: 100%;
+}

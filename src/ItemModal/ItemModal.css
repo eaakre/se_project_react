@@ -1,0 +1,16 @@
+.modal__item {
+  padding: 0;
+}
+
+.modal__image {
+  max-width: 496px;
+  border-radius: 20px 20px 0 0;
+}
+
+.modal__item-name {
+  margin: 12px 0 0 32px;
+}
+
+.modal__item-type {
+  margin: 12px 0 32px 32px;
+}
