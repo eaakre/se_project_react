@@ -1,6 +1,6 @@
 # Link to the site
 
-[https://eaakre.github.io/se_project_react]
+[Live Site](https://eaakre.github.io/se_project_react)
 
 # Getting Started with Create React App
 
