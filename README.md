@@ -12,8 +12,8 @@ This project uses React.js as well as HTML and CSS to dynamically advise you on 
 
 ## Screenshots
 
-![Project](src/images/screenshot1.png)
+(src/images/screenshot1.png)
 
-![Item modal](src/images/screenshot2.png)
+(src/images/screenshot2.png)
 
-![Add Clothes](src/images/screenshot3.png)
+(src/images/screenshot3.png)
