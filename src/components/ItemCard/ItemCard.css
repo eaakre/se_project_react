@@ -8,6 +8,7 @@
   width: 328px;
   height: 328px;
   flex-shrink: 0;
+  cursor: pointer;
 }
 
 .card__name {

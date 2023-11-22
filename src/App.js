@@ -31,13 +31,15 @@ function App() {
   };
 
   useEffect(() => {
-    getForcastWeather().then((data) => {
-      const temperature = parseWeatherData(data);
-      const location = parseWeatherCity(data);
-      setTemp(temperature);
-      setCity(location);
-    });
-  });
+    getForcastWeather()
+      .then((data) => {
+        const temperature = parseWeatherData(data);
+        const location = parseWeatherCity(data);
+        setTemp(temperature);
+        setCity(location);
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
   return (
     <div className="app">
@@ -48,6 +50,7 @@ function App() {
       {activeModal === "create" && (
         <ModalWithForm
           title="New Garment"
+          buttonText="Add garment"
           name="garment"
           onClose={handleCloseModal}
         >
@@ -77,6 +80,7 @@ function App() {
               <input
                 type="radio"
                 className="modal__radio"
+                name="type"
                 id="hot"
                 value="hot"
               />
@@ -86,6 +90,7 @@ function App() {
               <input
                 type="radio"
                 className="modal__radio"
+                name="type"
                 id="warm"
                 value="warm"
               />
@@ -95,6 +100,7 @@ function App() {
               <input
                 type="radio"
                 className="modal__radio"
+                name="type"
                 id="cold"
                 value="cold"
               />

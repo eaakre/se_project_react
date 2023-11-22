@@ -1,11 +1,12 @@
 import "./ItemModal.css";
+import closeLight from "../../images/close1.svg";
 
 const ItemModal = ({ selectedCard, onClose }) => {
   return (
     <div className={`modal`}>
       <div className="modal__content modal__item">
         <button type="button" className="modal__close" onClick={onClose}>
-          <img src={require("../../images/close1.svg").default} />
+          <img src={closeLight} />
         </button>
         <img
           src={selectedCard.link}
