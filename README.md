@@ -12,8 +12,8 @@ This project uses React.js as well as HTML and CSS to dynamically advise you on 
 
 ## Screenshots
 
-(./src/images/screenshot1.png?raw=true)
+('./src/images/screenshot1.png?raw=true')
 
-(./src/images/screenshot2.png?raw=true)
+('./src/images/screenshot2.png?raw=true')
 
-(./src/images/screenshot3.png?raw=true)
+('./src/images/screenshot3.png?raw=true')
