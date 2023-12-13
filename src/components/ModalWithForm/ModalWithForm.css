@@ -17,12 +17,15 @@
   max-width: 496px;
   width: 100%;
   border-radius: 20px;
-  padding: 28px;
   z-index: inherit;
   font-family: Cabinet Grotesk;
   font-size: 16px;
   font-weight: 700;
   line-height: 20px;
+}
+
+.modal__form {
+  padding: 28px;
 }
 
 .modal__close {

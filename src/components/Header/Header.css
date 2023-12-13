@@ -36,6 +36,11 @@
   background-color: transparent;
   cursor: pointer;
 }
+
+.header__link {
+  text-decoration: none;
+}
+
 .header__name {
   color: #000;
   font-family: Cabinet Grotesk;

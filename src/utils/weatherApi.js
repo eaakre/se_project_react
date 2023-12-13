@@ -17,7 +17,13 @@ export const getForcastWeather = () => {
 export const parseWeatherData = (data) => {
   const main = data.main;
   const temperature = main && main.temp;
-  return Math.ceil(temperature);
+  const weather = {
+    temperature: {
+      F: Math.round(data.main.temp),
+      C: Math.round(((data.main.temp - 32) * 5) / 9),
+    },
+  };
+  return weather;
 };
 
 export const parseWeatherCity = (data) => {

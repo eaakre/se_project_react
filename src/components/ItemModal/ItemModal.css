@@ -7,10 +7,28 @@
   border-radius: 20px 20px 0 0;
 }
 
+.modal__item-info {
+  display: flex;
+  justify-content: space-between;
+  margin: 12px 32px 32px 32px;
+}
+
 .modal__item-name {
-  margin: 12px 0 0 32px;
+  /* margin: 12px 0 0 32px; */
 }
 
 .modal__item-type {
-  margin: 12px 0 32px 32px;
+  margin: 12px 0 0;
+}
+
+.modal__item-delete {
+  color: #ff4d00;
+  font-family: Cabinet Grotesk;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 24px; /* 120% */
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
 }

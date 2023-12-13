@@ -1,0 +1,27 @@
+.clothes-section {
+  padding: 40px 40px 0 0;
+}
+.clothes-section__header {
+  padding: 10px 0 0;
+  display: flex;
+  font-family: Cabinet Grotesk;
+}
+
+.clothes-section__title {
+  margin: 0;
+  padding: 0 20px 0 0;
+  color: #000;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+}
+
+.clothes-section__button {
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px; /* 120% */
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
