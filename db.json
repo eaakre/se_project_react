@@ -113,6 +113,12 @@
       "imageUrl": "https://scheels.scene7.com/is/image/Scheels/19314770745?wid=500&hei=500&qlt=60",
       "weather": "cold",
       "_id": 18
+    },
+    {
+      "name": "Joggers",
+      "imageUrl": "https://scheels.scene7.com/is/image/Scheels/19314770745?wid=500&hei=500&qlt=60",
+      "weather": "warm",
+      "_id": 19
     }
   ]
 }
