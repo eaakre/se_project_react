@@ -14,12 +14,6 @@ const Profile = ({
 }) => {
   const currentUser = useContext(CurrentUserContext);
 
-  // {
-  //   clothingItems.map((item) => (
-  //     <ItemCard item={item} key={item._id} onSelectCard={onSelectCard} />
-  //   ));
-  // }
-
   return (
     <div className="profile">
       <Sidebar

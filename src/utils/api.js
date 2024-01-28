@@ -31,6 +31,7 @@ export const deleteClothingItems = (id) => {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
+      Authorization: `Bearer ${localStorage.jwt}`,
     },
   }).then((res) => processServerResponse(res));
 };
