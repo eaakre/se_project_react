@@ -50,3 +50,20 @@ export const getContent = (token) => {
     .then((res) => res.json())
     .then((data) => data);
 };
+
+export const updateUser = (name, avatar) => {
+  return fetch(`${BASE_URL}/users/me`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${localStorage.jwt}`,
+    },
+    body: JSON.stringify({ name, avatar }),
+  }).then((res) => {
+    if (!res) {
+      throw Error("Something went wrong, please try again.");
+    } else {
+      res.json();
+    }
+  });
+};

@@ -16,6 +16,7 @@ export const addClothingItems = ({ name, imageUrl, weather }) => {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      Authorization: `Bearer ${localStorage.jwt}`,
     },
     body: JSON.stringify({
       name,

@@ -48,3 +48,12 @@
   font-weight: 700;
   line-height: 24px;
 }
+
+.header__avatar {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  border-radius: 40px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  /* background: rgba(0, 0, 0, 0.2); */
+}

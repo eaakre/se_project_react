@@ -12,7 +12,12 @@ const currentDate = new Date().toLocaleString("default", {
 });
 
 const Header = ({ location, onCreateModal, onSignupModal, onSigninModal }) => {
-  const value = React.useContext(CurrentUserContext);
+  const currentUser = React.useContext(CurrentUserContext);
+  // const userAvatar = `${
+  //   !currentUser
+  //     ? "https://pngimg.com/uploads/letter_e/letter_e_PNG2.png"
+  //     : currentUser.userData.avatar
+  // }`;
 
   return (
     <header className="header">
@@ -28,7 +33,7 @@ const Header = ({ location, onCreateModal, onSignupModal, onSigninModal }) => {
       </div>
       <div className="header__avatar-logo">
         <ToggleSwitch />
-        {value.loggedIn ? (
+        {currentUser.loggedIn ? (
           <>
             <button
               type="text"
@@ -38,11 +43,16 @@ const Header = ({ location, onCreateModal, onSignupModal, onSigninModal }) => {
               + Add Clothes
             </button>
             <NavLink to="/profile" className="header__link">
-              <div className="header__name">{value.userData.name}</div>
+              <div className="header__name">{currentUser.userData.name}</div>
             </NavLink>
             <NavLink to="/profile">
               <div>
                 <img src={avatarLogo} alt="avatar-logo" />
+                {/* <img
+                  src={userAvatar}
+                  alt="avatar-logo"
+                  className="header__avatar"
+                /> */}
               </div>
             </NavLink>{" "}
           </>

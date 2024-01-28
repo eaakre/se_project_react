@@ -24,6 +24,7 @@ import {
   addClothingItems,
   deleteClothingItems,
 } from "../../utils/api";
+import EditProfileModal from "../EditProfileModal/EditProfileModal";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
@@ -46,6 +47,10 @@ function App() {
 
   const handleSigninModal = () => {
     setActiveModal("signin");
+  };
+
+  const handleEditProfileModal = () => {
+    setActiveModal("profile");
   };
 
   const handleCloseModal = () => {
@@ -76,6 +81,13 @@ function App() {
       });
   };
 
+  const handleUpdateUser = (name, avatar) => {
+    return auth.updateUser(name, avatar).then(() => {
+      checkToken();
+      handleCloseModal();
+    });
+  };
+
   const handleSignOut = () => {
     localStorage.removeItem("jwt");
     setLoggedIn(false);
@@ -88,12 +100,18 @@ function App() {
     if (!jwt) {
       return;
     }
-    auth.getContent(jwt).then((data) => {
-      if (!data) {
+    auth.getContent(jwt).then((userData) => {
+      console.log(userData);
+      if (!userData) {
         throw Error("Invalid JWT");
       } else {
         setLoggedIn(true);
-        setUserData({ name: data.data.name, email: data.email });
+        setUserData({
+          name: userData.data.name,
+          email: userData.data.email,
+          avatar: userData.data.avatar,
+          _id: userData.data._id,
+        });
         history.push("/profile");
       }
     });
@@ -160,7 +178,13 @@ function App() {
       value={{ currentTemperatureUnit, handleToggleSwitchChange }}
     >
       <CurrentUserContext.Provider
-        value={{ loggedIn, userData, handleLogin, handleRegister }}
+        value={{
+          loggedIn,
+          userData,
+          handleLogin,
+          handleRegister,
+          handleUpdateUser,
+        }}
       >
         <div className="app">
           <Header
@@ -177,14 +201,17 @@ function App() {
                 weatherTemp={temp}
                 clothingItems={clothingItems}
                 onSelectCard={handlePreviewModal}
+                jwt={localStorage.getItem("jwt")}
               />
             </Route>
             <ProtectedRoute path="/profile" loggedIn={loggedIn}>
               <Profile
                 onSelectCard={handlePreviewModal}
                 onCreateModal={handleCreateModal}
+                onEditProfileModal={handleEditProfileModal}
                 onSignOut={handleSignOut}
                 clothingItems={clothingItems}
+                jwt={localStorage.getItem("jwt")}
               />
             </ProtectedRoute>
           </Switch>
@@ -213,6 +240,12 @@ function App() {
           )}
           {activeModal === "signin" && (
             <LoginModal onClose={handleCloseModal} />
+          )}
+          {activeModal === "profile" && (
+            <EditProfileModal
+              onClose={handleCloseModal}
+              handleUpdateUser={handleUpdateUser}
+            />
           )}
         </div>
       </CurrentUserContext.Provider>
