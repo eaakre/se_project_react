@@ -11,16 +11,33 @@
   cursor: pointer;
 }
 
-.card__name {
+.card__info {
   position: absolute;
+  display: flex;
   z-index: 1;
   top: 16px;
   color: rgba(0, 0, 0, 0.6);
   font-family: Cabinet Grotesk;
+}
+
+.card__name {
   font-size: 16px;
   font-weight: 700;
   line-height: 20px;
   padding: 2px 12px;
   border-radius: 4px;
   background: #fff;
+  margin-right: 10px;
+}
+
+.card__like {
+  line-height: 20px;
+  display: flex;
+  align-items: center;
+  border: none;
+  background-color: transparent;
+}
+
+.card__liked {
+  fill: rgb(0, 0, 0);
 }

@@ -35,3 +35,23 @@ export const deleteClothingItems = (id) => {
     },
   }).then((res) => processServerResponse(res));
 };
+
+export const addCardLike = (id, token) => {
+  return fetch(`${baseUrl}/items/${id}/likes`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  }).then((res) => processServerResponse(res));
+};
+
+export const removeCardLike = (id) => {
+  return fetch(`${baseUrl}/items/${id}/likes`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${localStorage.jwt}`,
+    },
+  }).then((res) => processServerResponse(res));
+};

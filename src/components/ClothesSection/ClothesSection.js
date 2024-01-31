@@ -5,10 +5,10 @@ import { CurrentUserContext } from "../CurrentUserContext/CurrentUserContext";
 
 const ClothesSection = ({ onSelectCard, onCreateModal, clothingItems }) => {
   const currentUser = useContext(CurrentUserContext);
-
   const userCards = clothingItems.filter((item) => {
     return item.owner === currentUser.userData._id;
   });
+
   return (
     <div className="clothes-section">
       <div className="clothes-section__header">

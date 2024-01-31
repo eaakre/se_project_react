@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import "./ItemModal.css";
 import closeLight from "../../images/close1.svg";
-import closeDark from "../../images/close.svg";
+// import closeDark from "../../images/close.svg";
 import { CurrentUserContext } from "../CurrentUserContext/CurrentUserContext";
 
 const ItemModal = ({ selectedCard, onClose, onDeleteItem }) => {
@@ -15,7 +15,7 @@ const ItemModal = ({ selectedCard, onClose, onDeleteItem }) => {
     <div className={`modal`}>
       <div className="modal__content modal__item">
         <button type="button" className="modal__close" onClick={onClose}>
-          <img src={closeLight} />
+          <img src={closeLight} alt="Close modal button" />
         </button>
         <img
           src={selectedCard.imageUrl}

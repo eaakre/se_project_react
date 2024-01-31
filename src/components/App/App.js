@@ -19,6 +19,7 @@ import LoginModal from "../LoginModal/LoginModal";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import { CurrentUserContext } from "../CurrentUserContext/CurrentUserContext";
 import * as auth from "../../utils/auth";
+import * as api from "../../utils/api";
 import {
   getClothingItems,
   addClothingItems,
@@ -101,7 +102,6 @@ function App() {
       return;
     }
     auth.getContent(jwt).then((userData) => {
-      console.log(userData);
       if (!userData) {
         throw Error("Invalid JWT");
       } else {
@@ -139,6 +139,34 @@ function App() {
       .catch((err) => {
         console.log(err);
       });
+  };
+
+  const handleCardLike = (id, isLiked) => {
+    const token = localStorage.getItem("jwt");
+    console.log(id);
+    console.log(isLiked);
+    // Check if this card is now liked
+    !isLiked
+      ? // if so, send a request to add the user's id to the card's likes array
+        api
+          // the first argument is the card's id
+          .addCardLike(id, token)
+          .then((updatedCard) => {
+            setClothingItems((cards) =>
+              cards.map((c) => (c._id === id ? updatedCard : c))
+            );
+          })
+          .catch((err) => console.log(err))
+      : // if not, send a request to remove the user's id from the card's likes array
+        api
+          // the first argument is the card's id
+          .removeCardLike(id, token)
+          .then((updatedCard) => {
+            setClothingItems((cards) =>
+              cards.map((c) => (c._id === id ? updatedCard : c))
+            );
+          })
+          .catch((err) => console.log(err));
   };
 
   const handleToggleSwitchChange = () => {
@@ -201,6 +229,7 @@ function App() {
                 weatherTemp={temp}
                 clothingItems={clothingItems}
                 onSelectCard={handlePreviewModal}
+                onCardLike={handleCardLike}
                 jwt={localStorage.getItem("jwt")}
               />
             </Route>
