@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom/cjs/react-router-dom.min";
-import { CurrentUserContext } from "../CurrentUserContext/CurrentUserContext";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 function ProtectedRoute({ children, loggedIn, ...props }) {
   const value = React.useContext(CurrentUserContext);

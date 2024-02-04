@@ -1,23 +1,23 @@
 import "./App.css";
+import { useEffect, useState } from "react";
+import { Switch, Route } from "react-router-dom/cjs/react-router-dom";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import currentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
-import { useEffect, useState } from "react";
-// import { useHistory } from "react-router-dom/cjs/react-router-dom";
-import ItemModal from "../ItemModal/ItemModal";
 import Profile from "../Profile/Profile";
 import {
   getForcastWeather,
   parseWeatherCity,
   parseWeatherData,
 } from "../../utils/weatherApi";
-import currentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
-import { Switch, Route } from "react-router-dom/cjs/react-router-dom";
+import ItemModal from "../ItemModal/ItemModal";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import LoginModal from "../LoginModal/LoginModal";
+import EditProfileModal from "../EditProfileModal/EditProfileModal";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
-import { CurrentUserContext } from "../CurrentUserContext/CurrentUserContext";
 import * as auth from "../../utils/auth";
 import * as api from "../../utils/api";
 import {
@@ -25,7 +25,6 @@ import {
   addClothingItems,
   deleteClothingItems,
 } from "../../utils/api";
-import EditProfileModal from "../EditProfileModal/EditProfileModal";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
@@ -36,7 +35,6 @@ function App() {
   const [city, setCity] = useState("");
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [clothingItems, setClothingItems] = useState([]);
-  // const history = useHistory();
 
   const handleCreateModal = () => {
     setActiveModal("create");
@@ -54,13 +52,13 @@ function App() {
     setActiveModal("profile");
   };
 
-  const handleCloseModal = () => {
-    setActiveModal("");
-  };
-
   const handlePreviewModal = (card) => {
     setSelectedCard(card);
     setActiveModal("preview");
+  };
+
+  const handleCloseModal = () => {
+    setActiveModal("");
   };
 
   const handleRegister = (name, avatar, email, password) => {
@@ -115,7 +113,7 @@ function App() {
     });
   };
 
-  const onAddItem = ({ name, imageUrl, weather }) => {
+  const handleAddItem = ({ name, imageUrl, weather }) => {
     addClothingItems({ name, imageUrl, weather })
       .then((res) => {
         setClothingItems([res, ...clothingItems]);
@@ -126,7 +124,7 @@ function App() {
       });
   };
 
-  const onDeleteItem = () => {
+  const handleDeleteItem = () => {
     deleteClothingItems(selectedCard._id)
       .then(() => {
         setClothingItems(
@@ -141,11 +139,8 @@ function App() {
 
   const handleCardLike = (id, isLiked) => {
     const token = localStorage.getItem("jwt");
-    // Check if this card is now liked
     !isLiked
-      ? // if so, send a request to add the user's id to the card's likes array
-        api
-          // the first argument is the card's id
+      ? api
           .addCardLike(id, token)
           .then((updatedCard) => {
             setClothingItems((cards) =>
@@ -153,9 +148,7 @@ function App() {
             );
           })
           .catch((err) => console.log(err))
-      : // if not, send a request to remove the user's id from the card's likes array
-        api
-          // the first argument is the card's id
+      : api
           .removeCardLike(id, token)
           .then((updatedCard) => {
             setClothingItems((cards) =>
@@ -205,9 +198,6 @@ function App() {
         value={{
           loggedIn,
           userData,
-          handleLogin,
-          handleRegister,
-          handleUpdateUser,
         }}
       >
         <div className="app">
@@ -226,7 +216,6 @@ function App() {
                 clothingItems={clothingItems}
                 onSelectCard={handlePreviewModal}
                 onCardLike={handleCardLike}
-                jwt={localStorage.getItem("jwt")}
               />
             </Route>
             <ProtectedRoute path="/profile" loggedIn={loggedIn}>
@@ -237,7 +226,6 @@ function App() {
                 onSignOut={handleSignOut}
                 onCardLike={handleCardLike}
                 clothingItems={clothingItems}
-                jwt={localStorage.getItem("jwt")}
               />
             </ProtectedRoute>
           </Switch>
@@ -247,29 +235,28 @@ function App() {
           {activeModal === "create" && (
             <AddItemModal
               onClose={handleCloseModal}
-              isOpen={activeModal === "create"}
-              onAddItem={onAddItem}
+              onAddItem={handleAddItem}
             />
           )}
           {activeModal === "preview" && (
             <ItemModal
               selectedCard={selectedCard}
               onClose={handleCloseModal}
-              onDeleteItem={onDeleteItem}
-              onSignupModal={handleSignupModal}
+              onDeleteItem={handleDeleteItem}
             />
           )}
           {activeModal === "signup" && (
             <RegisterModal
               onClose={handleCloseModal}
-              handleRegister={handleRegister}
               onSigninModal={handleSigninModal}
+              handleRegister={handleRegister}
             />
           )}
           {activeModal === "signin" && (
             <LoginModal
               onClose={handleCloseModal}
               onSignupModal={handleSignupModal}
+              handleLogin={handleLogin}
             />
           )}
           {activeModal === "profile" && (

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { withRouter } from "react-router-dom/cjs/react-router-dom";
 
-const RegisterModal = ({ onClose, isOpen, handleRegister, onSigninModal }) => {
+const RegisterModal = ({ onClose, handleRegister, onSigninModal }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
@@ -26,7 +26,6 @@ const RegisterModal = ({ onClose, isOpen, handleRegister, onSigninModal }) => {
       buttonText="Next"
       name="garment"
       onClose={onClose}
-      isOpen={isOpen}
       onSubmit={handleSubmit}
       altLink={true}
       altLinkHandler={onSigninModal}

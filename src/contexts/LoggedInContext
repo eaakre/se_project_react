@@ -1,8 +1,0 @@
-import React from "react";
-
-const loggedInContext = React.createContext({
-  currentTemperatureUnit: "",
-  handleToggleSwitchChange: () => {},
-});
-
-export default loggedInContext;

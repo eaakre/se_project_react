@@ -1,7 +1,7 @@
+import "./ClothesSection.css";
 import { useContext } from "react";
 import ItemCard from "../ItemCard/ItemCard";
-import "./ClothesSection.css";
-import { CurrentUserContext } from "../CurrentUserContext/CurrentUserContext";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 const ClothesSection = ({
   onSelectCard,

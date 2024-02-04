@@ -2,7 +2,7 @@ import { useContext } from "react";
 import ClothesSection from "../ClothesSection/ClothesSection";
 import Sidebar from "../Sidebar/Sidebar";
 import "./Profile.css";
-import { CurrentUserContext } from "../CurrentUserContext/CurrentUserContext";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 const Profile = ({
   onSelectCard,
@@ -11,7 +11,6 @@ const Profile = ({
   onCardLike,
   onSignOut,
   clothingItems,
-  jwt,
 }) => {
   const currentUser = useContext(CurrentUserContext);
 

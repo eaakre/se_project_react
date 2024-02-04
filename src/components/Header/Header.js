@@ -4,7 +4,7 @@ import avatarLogo from "../../images/avatar.svg";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { CurrentUserContext } from "../CurrentUserContext/CurrentUserContext";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 const currentDate = new Date().toLocaleString("default", {
   month: "long",
@@ -14,9 +14,7 @@ const currentDate = new Date().toLocaleString("default", {
 const Header = ({ location, onCreateModal, onSignupModal, onSigninModal }) => {
   const currentUser = React.useContext(CurrentUserContext);
   const userAvatar = `${
-    !currentUser.userData.avatar
-      ? "https://pngimg.com/uploads/letter_e/letter_e_PNG2.png"
-      : currentUser.userData.avatar
+    !currentUser.userData.avatar ? avatarLogo : currentUser.userData.avatar
   }`;
 
   return (

@@ -2,11 +2,7 @@ import avatarLogo from "../../images/avatar.svg";
 import "./Sidebar.css";
 
 const Sidebar = ({ user, onSignOut, onEditProfileModal }) => {
-  const userAvatar = `${
-    !user.avatar
-      ? "https://pngimg.com/uploads/letter_e/letter_e_PNG2.png"
-      : user.avatar
-  }`;
+  const userAvatar = `${!user.avatar ? avatarLogo : user.avatar}`;
   return (
     <div className="sidebar">
       <div className="sidebar__avatar-logo">

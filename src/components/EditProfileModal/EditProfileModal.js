@@ -1,14 +1,12 @@
 import React, { useState, useContext } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
-import { useHistory } from "react-router-dom/cjs/react-router-dom";
-import { CurrentUserContext } from "../CurrentUserContext/CurrentUserContext";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
-const EditProfileModal = ({ onClose, isOpen }) => {
+const EditProfileModal = ({ onClose, handleUpdateUser }) => {
   const currentUser = useContext(CurrentUserContext);
   const [name, setName] = useState(`${currentUser.userData.name}`);
   const [avatar, setAvatar] = useState(`${currentUser.userData.avatar}`);
   const [message, setMessage] = useState("");
-  const history = useHistory();
 
   const resetForm = () => {
     setName(`${currentUser.userData.name}`);
@@ -21,8 +19,7 @@ const EditProfileModal = ({ onClose, isOpen }) => {
     if (!name) {
       return setMessage("Please enter a name.");
     }
-    currentUser
-      .handleUpdateUser(name, avatar)
+    handleUpdateUser(name, avatar)
       .then(() => {
         resetForm();
       })
@@ -37,7 +34,6 @@ const EditProfileModal = ({ onClose, isOpen }) => {
       buttonText="Save Changes"
       name="profile"
       onClose={onClose}
-      isOpen={isOpen}
       onSubmit={handleSubmit}
     >
       <label className="modal__label">

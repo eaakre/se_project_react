@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
-import { CurrentUserContext } from "../CurrentUserContext/CurrentUserContext";
 
-const LoginModal = ({ onClose, isOpen, onSignupModal }) => {
+const LoginModal = ({ onClose, onSignupModal, handleLogin }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
-  const value = React.useContext(CurrentUserContext);
 
   const resetForm = () => {
     setEmail("");
@@ -19,8 +17,7 @@ const LoginModal = ({ onClose, isOpen, onSignupModal }) => {
     if (!email || !password) {
       return setMessage("Please enter a valid email and password.");
     }
-    value
-      .handleLogin(email, password)
+    handleLogin(email, password)
       .then(() => {
         resetForm();
       })
@@ -35,7 +32,6 @@ const LoginModal = ({ onClose, isOpen, onSignupModal }) => {
       buttonText="Log in"
       name="garment"
       onClose={onClose}
-      isOpen={isOpen}
       onSubmit={handleSubmit}
       altLink={true}
       altLinkHandler={onSignupModal}
