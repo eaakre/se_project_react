@@ -13,11 +13,11 @@ const currentDate = new Date().toLocaleString("default", {
 
 const Header = ({ location, onCreateModal, onSignupModal, onSigninModal }) => {
   const currentUser = React.useContext(CurrentUserContext);
-  // const userAvatar = `${
-  //   !currentUser
-  //     ? "https://pngimg.com/uploads/letter_e/letter_e_PNG2.png"
-  //     : currentUser.userData.avatar
-  // }`;
+  const userAvatar = `${
+    !currentUser.userData.avatar
+      ? "https://pngimg.com/uploads/letter_e/letter_e_PNG2.png"
+      : currentUser.userData.avatar
+  }`;
 
   return (
     <header className="header">
@@ -47,12 +47,12 @@ const Header = ({ location, onCreateModal, onSignupModal, onSigninModal }) => {
             </NavLink>
             <NavLink to="/profile">
               <div>
-                <img src={avatarLogo} alt="avatar-logo" />
-                {/* <img
+                {/* <img src={avatarLogo} alt="avatar-logo" /> */}
+                <img
                   src={userAvatar}
                   alt="avatar-logo"
                   className="header__avatar"
-                /> */}
+                />
               </div>
             </NavLink>{" "}
           </>

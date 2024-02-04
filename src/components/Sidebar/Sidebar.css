@@ -10,6 +10,11 @@
 
 .sidebar__logo {
   margin-right: 16px;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  border-radius: 40px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
 }
 
 .sidebar__name {

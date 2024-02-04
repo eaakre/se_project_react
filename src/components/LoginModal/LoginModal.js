@@ -3,7 +3,7 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useHistory } from "react-router-dom/cjs/react-router-dom";
 import { CurrentUserContext } from "../CurrentUserContext/CurrentUserContext";
 
-const LoginModal = ({ onClose, isOpen }) => {
+const LoginModal = ({ onClose, isOpen, onSignupModal }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
@@ -25,7 +25,6 @@ const LoginModal = ({ onClose, isOpen }) => {
       .handleLogin(email, password)
       .then(() => {
         resetForm();
-        history.push("/profile");
       })
       .catch((err) => {
         setMessage(err.message || "Something went wrong.");
@@ -40,6 +39,9 @@ const LoginModal = ({ onClose, isOpen }) => {
       onClose={onClose}
       isOpen={isOpen}
       onSubmit={handleSubmit}
+      altLink={true}
+      altLinkHandler={onSignupModal}
+      altLinkText="or Sign Up"
     >
       <label className="modal__label">
         Email
@@ -57,7 +59,7 @@ const LoginModal = ({ onClose, isOpen }) => {
       <label className="modal__label">
         Password
         <input
-          type="text"
+          type="password"
           className="modal__input"
           name="password"
           value={password}

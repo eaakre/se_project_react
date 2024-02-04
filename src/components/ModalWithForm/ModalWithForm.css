@@ -92,7 +92,27 @@
   line-height: 20px;
   cursor: pointer;
 }
+.modal__submit-wrapper {
+  display: flex;
+  align-items: center;
+}
 
 .modal__submit:hover {
   background: rgba(0, 0, 0, 0.3);
+}
+.modal__link {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0.5);
+  font-family: "Cabinet Grotesk";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px; /* 125% */
+  display: flex;
+  padding: 8px 16px;
+  justify-content: center;
+  align-items: center;
+  margin: 32px 0 8px;
 }

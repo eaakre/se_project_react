@@ -30,7 +30,7 @@
   margin-right: 10px;
 }
 
-.card__like {
+.card__like-button {
   line-height: 20px;
   display: flex;
   align-items: center;
@@ -38,6 +38,10 @@
   background-color: transparent;
 }
 
-.card__liked {
+.card__like-button_liked {
   fill: rgb(0, 0, 0);
+}
+
+.card__like-button_disliked {
+  fill: transparent;
 }

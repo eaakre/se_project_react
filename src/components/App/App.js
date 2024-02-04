@@ -3,7 +3,7 @@ import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
 import { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { useHistory } from "react-router-dom/cjs/react-router-dom";
 import ItemModal from "../ItemModal/ItemModal";
 import Profile from "../Profile/Profile";
 import {
@@ -30,7 +30,7 @@ import EditProfileModal from "../EditProfileModal/EditProfileModal";
 function App() {
   const [activeModal, setActiveModal] = useState("");
   const [loggedIn, setLoggedIn] = useState(false);
-  const [userData, setUserData] = useState(null);
+  const [userData, setUserData] = useState({});
   const [selectedCard, setSelectedCard] = useState({});
   const [temp, setTemp] = useState(0);
   const [city, setCity] = useState("");
@@ -92,8 +92,7 @@ function App() {
   const handleSignOut = () => {
     localStorage.removeItem("jwt");
     setLoggedIn(false);
-    setUserData(null);
-    history.push("/");
+    setUserData({});
   };
 
   const checkToken = () => {
@@ -112,7 +111,6 @@ function App() {
           avatar: userData.data.avatar,
           _id: userData.data._id,
         });
-        history.push("/profile");
       }
     });
   };
@@ -143,8 +141,6 @@ function App() {
 
   const handleCardLike = (id, isLiked) => {
     const token = localStorage.getItem("jwt");
-    console.log(id);
-    console.log(isLiked);
     // Check if this card is now liked
     !isLiked
       ? // if so, send a request to add the user's id to the card's likes array
@@ -153,7 +149,7 @@ function App() {
           .addCardLike(id, token)
           .then((updatedCard) => {
             setClothingItems((cards) =>
-              cards.map((c) => (c._id === id ? updatedCard : c))
+              cards.map((c) => (c._id === id ? updatedCard.data : c))
             );
           })
           .catch((err) => console.log(err))
@@ -163,7 +159,7 @@ function App() {
           .removeCardLike(id, token)
           .then((updatedCard) => {
             setClothingItems((cards) =>
-              cards.map((c) => (c._id === id ? updatedCard : c))
+              cards.map((c) => (c._id === id ? updatedCard.data : c))
             );
           })
           .catch((err) => console.log(err));
@@ -259,16 +255,21 @@ function App() {
               selectedCard={selectedCard}
               onClose={handleCloseModal}
               onDeleteItem={onDeleteItem}
+              onSignupModal={handleSignupModal}
             />
           )}
           {activeModal === "signup" && (
             <RegisterModal
               onClose={handleCloseModal}
               handleRegister={handleRegister}
+              onSigninModal={handleSigninModal}
             />
           )}
           {activeModal === "signin" && (
-            <LoginModal onClose={handleCloseModal} />
+            <LoginModal
+              onClose={handleCloseModal}
+              onSignupModal={handleSignupModal}
+            />
           )}
           {activeModal === "profile" && (
             <EditProfileModal

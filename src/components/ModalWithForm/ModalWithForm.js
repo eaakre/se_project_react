@@ -9,7 +9,9 @@ const ModalWithForm = ({
   name,
   isOpen,
   onSubmit,
-  linkText,
+  altLink,
+  altLinkHandler,
+  altLinkText,
 }) => {
   return (
     <div className={`modal modal_type_${name}`}>
@@ -20,16 +22,20 @@ const ModalWithForm = ({
         <h3 className="modal__title">{title}</h3>
         <form className="modal__form" onSubmit={onSubmit}>
           {children}
-          <button type="submit" className="modal__submit">
-            {buttonText}
-          </button>
-          {/* <button
-            type="link"
-            className="sidebar__button"
-            onClick={onEditProfileModal}
-          >
-            {linkText}
-          </button> */}
+          <div className="modal__submit-wrapper">
+            <button type="submit" className="modal__submit">
+              {buttonText}
+            </button>
+            {altLink && (
+              <button
+                type="button"
+                className="modal__link"
+                onClick={altLinkHandler}
+              >
+                {altLinkText}
+              </button>
+            )}
+          </div>
         </form>
       </div>
     </div>

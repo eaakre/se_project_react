@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useHistory, withRouter } from "react-router-dom/cjs/react-router-dom";
 
-const RegisterModal = ({ onClose, isOpen, handleRegister }) => {
+const RegisterModal = ({ onClose, isOpen, handleRegister, onSigninModal }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
@@ -15,7 +15,6 @@ const RegisterModal = ({ onClose, isOpen, handleRegister }) => {
     handleRegister(name, avatar, email, password)
       .then(() => {
         setMessage("");
-        history.push("/profile");
       })
       .catch((err) => {
         setMessage(err.message || "Something went wrong");
@@ -30,6 +29,9 @@ const RegisterModal = ({ onClose, isOpen, handleRegister }) => {
       onClose={onClose}
       isOpen={isOpen}
       onSubmit={handleSubmit}
+      altLink={true}
+      altLinkHandler={onSigninModal}
+      altLinkText="or Sign In"
     >
       <label className="modal__label">
         Email*
