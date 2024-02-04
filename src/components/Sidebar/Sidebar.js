@@ -1,7 +1,7 @@
 import avatarLogo from "../../images/avatar.svg";
-import "./Sidebar.css";
+import "./SideBar.css";
 
-const Sidebar = ({ user, onSignOut, onEditProfileModal }) => {
+const SideBar = ({ user, onSignOut, onEditProfileModal }) => {
   const userAvatar = `${!user.avatar ? avatarLogo : user.avatar}`;
   return (
     <div className="sidebar">
@@ -24,4 +24,4 @@ const Sidebar = ({ user, onSignOut, onEditProfileModal }) => {
     </div>
   );
 };
-export default Sidebar;
+export default SideBar;

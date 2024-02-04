@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import ClothesSection from "../ClothesSection/ClothesSection";
-import Sidebar from "../Sidebar/Sidebar";
+import SideBar from "../SideBar/SideBar";
 import "./Profile.css";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
@@ -16,7 +16,7 @@ const Profile = ({
 
   return (
     <div className="profile">
-      <Sidebar
+      <SideBar
         user={currentUser.userData}
         onSignOut={onSignOut}
         onEditProfileModal={onEditProfileModal}
