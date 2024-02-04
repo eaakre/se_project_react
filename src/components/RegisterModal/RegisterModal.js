@@ -1,3 +1,4 @@
+import "./RegisterModal.css";
 import React, { useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { withRouter } from "react-router-dom/cjs/react-router-dom";
