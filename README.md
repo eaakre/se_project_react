@@ -1,10 +1,10 @@
-# Link to Back End for this project
+# Link to Back-End for this project
 
-[WTWR Back-end](https://github.com/eaakre/se_project_express)
+[WTWR back-end](https://github.com/eaakre/se_project_express)
 
 ## WTWR
 
-[Live wtwr site](https://eaakre.github.io/se_project_react)
+[WTWR Site prior to back-end implementation](https://eaakre.github.io/se_project_react)
 
 ## Description of the project
 
