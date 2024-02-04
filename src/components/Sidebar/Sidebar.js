@@ -3,6 +3,7 @@ import "./SideBar.css";
 
 const SideBar = ({ user, onSignOut, onEditProfileModal }) => {
   const userAvatar = `${!user.avatar ? avatarLogo : user.avatar}`;
+
   return (
     <div className="sidebar">
       <div className="sidebar__avatar-logo">
