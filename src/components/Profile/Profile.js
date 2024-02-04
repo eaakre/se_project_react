@@ -8,6 +8,7 @@ const Profile = ({
   onSelectCard,
   onCreateModal,
   onEditProfileModal,
+  onCardLike,
   onSignOut,
   clothingItems,
   jwt,
@@ -24,6 +25,7 @@ const Profile = ({
       <ClothesSection
         onSelectCard={onSelectCard}
         onCreateModal={onCreateModal}
+        onCardLike={onCardLike}
         onSignOut={onSignOut}
         clothingItems={clothingItems}
       />

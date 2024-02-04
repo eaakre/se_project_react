@@ -1,13 +1,11 @@
 import React, { useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
-import { useHistory } from "react-router-dom/cjs/react-router-dom";
 import { CurrentUserContext } from "../CurrentUserContext/CurrentUserContext";
 
 const LoginModal = ({ onClose, isOpen, onSignupModal }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
-  const history = useHistory();
   const value = React.useContext(CurrentUserContext);
 
   const resetForm = () => {

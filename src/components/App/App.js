@@ -3,7 +3,7 @@ import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
 import { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom/cjs/react-router-dom";
+// import { useHistory } from "react-router-dom/cjs/react-router-dom";
 import ItemModal from "../ItemModal/ItemModal";
 import Profile from "../Profile/Profile";
 import {
@@ -36,7 +36,7 @@ function App() {
   const [city, setCity] = useState("");
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [clothingItems, setClothingItems] = useState([]);
-  const history = useHistory();
+  // const history = useHistory();
 
   const handleCreateModal = () => {
     setActiveModal("create");
@@ -235,6 +235,7 @@ function App() {
                 onCreateModal={handleCreateModal}
                 onEditProfileModal={handleEditProfileModal}
                 onSignOut={handleSignOut}
+                onCardLike={handleCardLike}
                 clothingItems={clothingItems}
                 jwt={localStorage.getItem("jwt")}
               />

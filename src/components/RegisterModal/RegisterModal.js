@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
-import { useHistory, withRouter } from "react-router-dom/cjs/react-router-dom";
+import { withRouter } from "react-router-dom/cjs/react-router-dom";
 
 const RegisterModal = ({ onClose, isOpen, handleRegister, onSigninModal }) => {
   const [email, setEmail] = useState("");
@@ -8,7 +8,6 @@ const RegisterModal = ({ onClose, isOpen, handleRegister, onSigninModal }) => {
   const [name, setName] = useState("");
   const [avatar, setAvatar] = useState("");
   const [message, setMessage] = useState("");
-  const history = useHistory();
 
   const handleSubmit = (e) => {
     e.preventDefault();
