@@ -116,7 +116,8 @@ function App() {
   const handleAddItem = ({ name, imageUrl, weather }) => {
     addClothingItems({ name, imageUrl, weather })
       .then((res) => {
-        setClothingItems([res, ...clothingItems]);
+        console.log(res);
+        setClothingItems([res.data, ...clothingItems]);
         handleCloseModal();
       })
       .catch((err) => {
