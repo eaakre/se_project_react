@@ -8,23 +8,14 @@ const Main = ({ weatherTemp, clothingItems, onSelectCard, onCardLike }) => {
   const { currentTemperatureUnit } = useContext(currentTemperatureUnitContext);
 
   const temp = weatherTemp?.temperature?.[currentTemperatureUnit];
+  const tempInF = currentTemperatureUnit === "F" ? temp : temp * 1.8 + 32;
   const getWeatherType = () => {
-    if (currentTemperatureUnit === "F") {
-      if (temp >= 86) {
-        return "hot";
-      } else if (temp >= 66 && temp <= 85) {
-        return "warm";
-      } else if (temp <= 65) {
-        return "cold";
-      }
-    } else if (currentTemperatureUnit === "C") {
-      if (temp >= 86) {
-        return "hot";
-      } else if (temp >= 66 && temp <= 85) {
-        return "warm";
-      } else if (temp <= 65) {
-        return "cold";
-      }
+    if (tempInF >= 86) {
+      return "hot";
+    } else if (temp >= 66 && temp <= 85) {
+      return "warm";
+    } else if (temp <= 65) {
+      return "cold";
     }
   };
   const weatherType = getWeatherType();

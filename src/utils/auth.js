@@ -1,3 +1,5 @@
+import processServerResponse from "./processServerResponse";
+
 export const BASE_URL = "http://localhost:3001";
 
 export const register = (name, avatar, email, password) => {
@@ -8,9 +10,7 @@ export const register = (name, avatar, email, password) => {
     },
     body: JSON.stringify({ name, avatar, email, password }),
   })
-    .then((res) => {
-      return res.json();
-    })
+    .then((res) => processServerResponse(res))
     .then((data) => {
       if (data) {
         return authorize(email, password);
@@ -28,7 +28,7 @@ export const authorize = (email, password) => {
     },
     body: JSON.stringify({ email, password }),
   })
-    .then((res) => res.json())
+    .then((res) => processServerResponse(res))
     .then((data) => {
       if (data.token) {
         return data;
@@ -47,7 +47,7 @@ export const getContent = (token) => {
       Authorization: `Bearer ${token}`,
     },
   })
-    .then((res) => res.json())
+    .then((res) => processServerResponse(res))
     .then((data) => data);
 };
 
@@ -59,11 +59,5 @@ export const updateUser = (name, avatar) => {
       Authorization: `Bearer ${localStorage.jwt}`,
     },
     body: JSON.stringify({ name, avatar }),
-  }).then((res) => {
-    if (!res) {
-      throw Error("Something went wrong, please try again.");
-    } else {
-      res.json();
-    }
-  });
+  }).then((res) => processServerResponse(res));
 };

@@ -77,6 +77,9 @@ function App() {
       .then(() => {
         checkToken();
         handleCloseModal();
+      })
+      .catch((err) => {
+        console.log(err);
       });
   };
 
@@ -98,19 +101,24 @@ function App() {
     if (!jwt) {
       return;
     }
-    auth.getContent(jwt).then((userData) => {
-      if (!userData) {
-        throw Error("Invalid JWT");
-      } else {
-        setLoggedIn(true);
-        setUserData({
-          name: userData.data.name,
-          email: userData.data.email,
-          avatar: userData.data.avatar,
-          _id: userData.data._id,
-        });
-      }
-    });
+    auth
+      .getContent(jwt)
+      .then((userData) => {
+        if (!userData) {
+          throw Error("Invalid JWT");
+        } else {
+          setLoggedIn(true);
+          setUserData({
+            name: userData.data.name,
+            email: userData.data.email,
+            avatar: userData.data.avatar,
+            _id: userData.data._id,
+          });
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   const handleAddItem = ({ name, imageUrl, weather }) => {
@@ -166,6 +174,19 @@ function App() {
   useEffect(() => {
     checkToken();
   }, []);
+
+  useEffect(() => {
+    if (!activeModal) return;
+    const handleEscClose = (e) => {
+      if (e.key === "Escape") {
+        handleCloseModal();
+      }
+    };
+    document.addEventListener("keydown", handleEscClose);
+    return () => {
+      document.removeEventListener("keydown", handleEscClose);
+    };
+  }, [activeModal]);
 
   useEffect(() => {
     getForcastWeather()

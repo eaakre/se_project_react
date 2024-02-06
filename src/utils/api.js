@@ -1,4 +1,4 @@
-import { processServerResponse } from "./weatherApi";
+import processServerResponse from "./processServerResponse";
 
 const baseUrl = "http://localhost:3001";
 

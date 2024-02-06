@@ -1,11 +1,5 @@
 import { latitude, longitude, API_KEY } from "./constants";
-
-export const processServerResponse = (res) => {
-  if (res.ok) {
-    return res.json();
-  }
-  return Promise.reject(`Error: ${res.status}`);
-};
+import processServerResponse from "./processServerResponse";
 
 export const getForcastWeather = () => {
   const weatherApi = fetch(
