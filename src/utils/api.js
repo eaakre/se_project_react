@@ -1,6 +1,10 @@
 import processServerResponse from "./processServerResponse";
 
-const baseUrl = "http://localhost:3001";
+// const baseUrl = "http://localhost:3001";
+export const baseUrl =
+  process.env.NODE_ENV === "production"
+    ? "deployed-backend-url"
+    : "http://localhost:3001";
 
 function request(url, options) {
   return fetch(url, options).then(processServerResponse);
