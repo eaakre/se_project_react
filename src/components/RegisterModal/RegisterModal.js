@@ -48,7 +48,7 @@ const RegisterModal = ({ onClose, handleRegister, onSigninModal }) => {
       <label className="modal__label">
         Password*
         <input
-          type="text"
+          type="password"
           className="modal__input"
           name="password"
           value={password}
