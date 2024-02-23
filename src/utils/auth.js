@@ -3,7 +3,7 @@ import processServerResponse from "./processServerResponse";
 // export const BASE_URL = "http://localhost:3001";
 export const BASE_URL =
   process.env.NODE_ENV === "production"
-    ? "https://wtwr.themoosebarn.com"
+    ? "https://api.wtwr.themoosebarn.com"
     : "http://localhost:3001";
 
 export const register = (name, avatar, email, password) => {
